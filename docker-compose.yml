@@ -1,0 +1,20 @@
+version: "2"
+services: 
+  app:
+    build: .
+    depends_on:
+      - mariadb    
+    ports: 
+      - "8080:80"
+    volumes:
+      - .:/srv
+    links:
+      - mariadb:mariadb    
+  mariadb:
+    image: mariadb:10.1.21
+    ports: 
+      - 13306:3306
+    environment:
+      - MYSQL_DATABASE=dockerphp
+      - MYSQL_ROOT_PASSWORD=password    
+
