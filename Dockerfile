@@ -4,5 +4,6 @@ MAINTAINER Freek
 COPY .docker/php/php.ini /user/local/etc/php/
 COPY . /srv
 COPY .docker/apache/vhost.conf /etc/apache2/sites-available/000-default.conf
-RUN docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install opcache
+RUN docker-php-ext-install pdo_mysql opcache \
+    && pecl install xdebug-2.5.1 \
+    && docker-php-ext-enable xdebug
