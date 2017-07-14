@@ -10,6 +10,7 @@ services:
       - .:/srv
     links:
       - mariadb:mariadb    
+    env_file: .docker.env    
   mariadb:
     image: mariadb:10.1.21
     ports: 
